@@ -20,6 +20,7 @@ use STS\EmailEventParser\Adapters\SendGridWebhook;
  * @method mixed getCode()
  * @method Collection getTags()
  * @method Collection getData()
+ * @method array getPayload()
  */
 class EmailEvent
 {
