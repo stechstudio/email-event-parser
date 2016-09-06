@@ -32,8 +32,6 @@ class MailgunWebhookAdapterTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("awesome", $adapter->get("my-var-2"));
         $this->assertEquals("awesome", $adapter->getData()->get("my-var-2"));
 
-        $this->assertEquals("Test deliver webhook", $adapter->get("Subject"));
-
         $this->assertNull($adapter->getResponse());
         $this->assertNull($adapter->getCode());
     }
@@ -69,8 +67,6 @@ class MailgunWebhookAdapterTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(0, $adapter->getTags()->count());
         $this->assertFalse($adapter->getTags()->contains("tag1"));
-
-        $this->assertEquals("Test bounces webhook", $adapter->get("Subject"));
     }
 
     public function testDroppedEvent()
@@ -103,8 +99,6 @@ class MailgunWebhookAdapterTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($adapter->getTags()->contains("tag1"));
         $this->assertNull($adapter->get("my-var-2"));
 
-        $this->assertEquals("Test drop webhook", $adapter->get("Subject"));
-
         $this->assertEmpty($adapter->getResponse());
     }
 
@@ -127,6 +121,5 @@ class MailgunWebhookAdapterTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(\STS\EmailEventParser\EmailEvent::EVENT_COMPLAINED, $adapter->getType());
         $this->assertEquals("9b2f9bba709c8145eb2d2b879effc99503c1238cc1c403bda3", $adapter->get('token'));
-        $this->assertEquals("1.0", $adapter->get("Mime-Version"));
     }
 }

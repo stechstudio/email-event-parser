@@ -42,7 +42,7 @@ class MailgunWebhook extends AbstractAdapter
     {
         parent::__construct($payload);
 
-        $this->headers = $this->parseHeaders(collect(json_decode($this->payload->get('message-headers'), true)));
+        $this->headers = collect(json_decode($this->payload->get('message-headers'), true));
     }
 
     /**
@@ -106,7 +106,11 @@ class MailgunWebhook extends AbstractAdapter
      */
     public function getTags()
     {
-        return $this->headers->get('X-Mailgun-Tag');
+        return $this->headers
+            ->filter(function($header) {
+                return $header[0] == 'X-Mailgun-Tag';
+            })
+            ->pluck(1);
     }
 
     /**
@@ -114,7 +118,14 @@ class MailgunWebhook extends AbstractAdapter
      */
     public function getData()
     {
-        return $this->headers->get('X-Mailgun-Variables');
+        return collect(json_decode(
+            $this->headers
+                ->filter(function($header) {
+                    return $header[0] == 'X-Mailgun-Variables';
+                })
+                ->flatten()
+                ->pull(1)
+        , true));
     }
 
     /**
