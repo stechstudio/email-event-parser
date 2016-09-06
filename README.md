@@ -34,8 +34,8 @@ This will examine the event data and figure out which service sent the event, an
 
 Once you have an event object, here is a list of methods that are available:
 
-| ------ | ----------- |
 | **Method** | **Description** |
+| ---------- | --------------- |
 | getType() | Event type (delivered, bounced, etc) |
 | getService() | Service provider name (SendGrid, Mailgun) |
 | getMessageId() | SMTP ID of the email |
