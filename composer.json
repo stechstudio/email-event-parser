@@ -1,0 +1,22 @@
+{
+    "name": "stechstudio/email-event-parser",
+    "description": "Parses event data from a variety of email service providers",
+    "require": {
+        "illuminate/support": "5.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joseph Szobody",
+            "email": "joseph@stechstudio.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "STS\\EmailEventParser\\": "src"
+        }
+    }
+}
