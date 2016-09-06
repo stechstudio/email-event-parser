@@ -35,17 +35,17 @@ interface AdapterContract
     public function getTimestamp();
 
     /**
-     * @return string|null
+     * @return mixed
      */
     public function getResponse();
 
     /**
-     * @return string|null
+     * @return mixed
      */
     public function getReason();
 
     /**
-     * @return int|null
+     * @return mixed
      */
     public function getCode();
 

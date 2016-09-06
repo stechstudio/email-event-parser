@@ -1,6 +1,7 @@
 <?php
 namespace STS\EmailEventParser;
 
+use Illuminate\Support\Collection;
 use STS\EmailEventParser\AdapterContract;
 use STS\EmailEventParser\Adapters\MailgunWebhook;
 use STS\EmailEventParser\Adapters\SendGridWebhook;
@@ -8,6 +9,17 @@ use STS\EmailEventParser\Adapters\SendGridWebhook;
 /**
  * Class EmailEvent
  * @package STS\EmailEventParser
+ *
+ * @method string getServiceName()
+ * @method string getType()
+ * @method string getMessageId()
+ * @method string getRecipient()
+ * @method int getTimestamp()
+ * @method string getResponse()
+ * @method string getReason()
+ * @method mixed getCode()
+ * @method Collection getTags()
+ * @method Collection getData()
  */
 class EmailEvent
 {

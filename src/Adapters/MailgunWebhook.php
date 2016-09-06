@@ -155,24 +155,4 @@ class MailgunWebhook extends AbstractAdapter
     {
         return array_key_exists('token', $payload) && array_key_exists('signature', $payload);
     }
-
-    /**
-     * @param Collection $headers
-     *
-     * @return Collection
-     */
-    protected function parseHeaders(Collection $headers)
-    {
-        return $headers
-            // First element of each sub-array is our key
-            ->pluck(0)
-            // Second element is the value
-            ->combine($headers->pluck(1))
-            // Overwrite the X-Mailgun-Tag key with a collection of tags
-            ->put('X-Mailgun-Tag', $headers->where(0, "=", 'X-Mailgun-Tag')->pluck(1))
-            // Overwrite the X-Mailgun-Variables. Need to json_decode and wrap as a collection.
-            ->put('X-Mailgun-Variables', collect(
-                json_decode($headers->where(0, "=", 'X-Mailgun-Variables')->flatten()->pull(1), true)
-            ));
-    }
 }
